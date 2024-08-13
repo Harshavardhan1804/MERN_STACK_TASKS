@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Task1
+        let book = new Object();
+        book.title = "life";
+        book.author = "Me";
+        book.yearPublished = 2005;
+        book.getSummary = function(){
+            console.log(this.author+" "+this.title+" "+this.yearPublished);
+        }
+
+        console.log(book)
+        book.getSummary()
+
+        //Task2
+        book.age = function(){
+            let date  = new Date();
+            
+            return date.getFullYear() - this.yearPublished;
+        }
+        console.log(book.age());
+
+        //Task 3
+        let calculator = {
+            n1:202,
+            n2:203,
+            add(){
+                return this.n1+this.n2;
+            },
+            subtract(){
+                return this.n1-this.n2;
+            },
+            multiply(){
+                return this.n1*this.n2;
+            },
+            divide(){
+                return this.n1/this.n2;
+            },
+        }
+        console.log(calculator.add());
+        console.log(calculator.subtract());
+        console.log(calculator.divide());
+        console.log(calculator.multiply());
+
+        //Task4
+        calculator.history = [];
+        calculator.add = function(){
+                let res = ["Add"];
+                res.push(this.n1+this.n2);
+                calculator.history.push(res);
+                return res[1];
+            }
+            
+        calculator.subtract = function(){
+                let res = ["Subtract"];
+                res.push(this.n1-this.n2);
+                calculator.history.push(res);
+                return res[1];
+            }
+            
+        calculator.multiply = function(){
+                let res = ["Multiply"];
+                res.push(this.n1*this.n2);
+                calculator.history.push(res);
+                return res[1];
+            }
+            
+        calculator.divide = function(){
+                let res = ["Divide"];
+                res.push(this.n1/this.n2);
+                calculator.history.push(res);
+                return res[1];
+            }
+
+        console.log(calculator.history);
+        console.log(calculator.add());
+        console.log(calculator.divide());
+        console.log(calculator.history);
+        
+        //Task 5
+        let person = {
+            age:10,
+            up(){
+                this.age++;
+                return this;
+            },
+            down(){
+                if(this.age>0){
+                    this.age--;
+                }  
+                else{
+                    console.log("age cannot be -ve");
+                }
+                return this;
+            }
+        }
+        console.log(person.up().down().up().up());
+        console.log(person.age);
+
+        //Task6
+
+        person.name = "shalini";
+        person.greet = function(){
+            return "Welcome "+this.name;
+        }
+        console.log(person.greet());
+
+
+        //Task7
+        circle = {
+            radius:5,
+            calculateArea(){
+                return this.radius*this.radius*Math.PI;
+            }
+        }
+        console.log(circle.calculateArea());
+
+        //Task 8
+        circle.calculateDiameter = function(){
+            return 2*this.radius;
+        }
+
+        circle.calculateCircumference = function(){
+            return this.calculateDiameter()*Math.PI;
+        }
+
+        console.log(circle.calculateCircumference());
+        console.log(circle.calculateDiameter());
+        
+        //Task 9\
+        let account = {
+            name:"a",
+            balance:100,
+            deposit(depositAmount){
+                this.balance+=depositAmount;
+                return "Balance : "+this.balance;
+            },
+            withdraw(withdrawAmount){
+                if(this.balance>=withdrawAmount){
+                    this.balance-=withdrawAmount;
+                    return "balance: "+this.balance;
+                }
+                else{
+                    console.log("insufficient balance");
+                    return "Available Balance: "+this.balance;
+                }
+            }
+        }
+
+
+        //task 10
+
+        console.log(account.deposit(100));
+        console.log(account.balance);
+        console.log(account.withdraw(150));
+        console.log(account.balance);
+        console.log(account.withdraw(150));
+
+    </script>
+</body>
+</html>
